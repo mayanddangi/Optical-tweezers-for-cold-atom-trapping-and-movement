@@ -5,4 +5,4 @@ More detail can be found in [Project Report file](https://github.com/mayanddangi
 
 ## Project Report
 ![alt_text](Project Report/report_img/Project Report_page-0003.jpg)
-![alt_text](/Result/1/combine.png)
+![alt_text](/Result/report_img/1.jpg)
