@@ -4,4 +4,4 @@ This project aims to design optical tweezers for capturing single neutral atoms,
 More detail can be found in [Project Report file](https://github.com/mayanddangi/BTP_Optical-Tweezers/blob/main/Project%20Report.pdf).
 
 ## Project Report
-![alt_text](Project Report/report_img/Project Report_page-0003.jpg)
+![alt_text](/Project Report/report_img/Project Report_page-0003.jpg)
