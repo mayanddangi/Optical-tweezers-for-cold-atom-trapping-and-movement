@@ -1,6 +1,6 @@
 '''
         
-    Version: 1.0
+    Version: 1.1
     
     
     @created on 30-10-2022
@@ -12,7 +12,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import animation
 
-import hangu_thepathfinder
+# import hangu_thepathfinder
+from hangu_thepathfinder_class import hangu_the_pathfinder
 import GS
 
 
@@ -25,7 +26,10 @@ frame = 10
 res1 = dim_original*spacing_pixel+origin[0]
 res2 = dim_original*spacing_pixel+origin[1]
 
-moves, moveX, moveY, a = hangu_thepathfinder.hangu_findpath_XandY(dim_original, spacing_pixel, origin, captured_prob, frame)
+hangu_moves = hangu_the_pathfinder(dim_original, spacing_pixel, origin, captured_prob, frame)
+moves, moveX, moveY, a = hangu_moves.hangu_findpath_XandY()
+
+# moves, moveX, moveY, a = hangu_thepathfinder.hangu_findpath_XandY(dim_original, spacing_pixel, origin, captured_prob, frame)
 
 
 '''

@@ -1,6 +1,5 @@
 """
 The Munkres Class is copyrighted by Brian M. Clapper, see below.
-It has been modified to be used for rearrangement.
 
 Copyright and License
 =====================
