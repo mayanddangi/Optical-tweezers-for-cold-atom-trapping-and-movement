@@ -1,13 +1,13 @@
-'''
-    This program intend to find the optimal path for moving the atom using hungarian algorithm.
-    
+'''    
+    Hangu - The Pathfinder is a program to find the optimal path for moving an atom using the Hungarian algorithm.
+    The program takes input of the size of a square matrix (tweezers), spacing between two points, origin (lower left corner of the tweezers), and the probability of capturing an atom. It generates a list of coordinates of positions of the trapped atoms in the tweezers. Then, it generates a list of coordinates of targeted atoms, based on the size of the square matrix and spacing between two atoms. Finally, it finds the optimal path for moving the trapped atoms to the targeted atoms using the Hungarian algorithm.
+
+    @author: Mayand Dangi  
     Version: 3.0
     
-    
-    
+        
     @created on 30-10-2022
     @last edit on 30-01-2023
-    @author: Mayand Dangi
 '''
 
 # ---- Package Import ----
