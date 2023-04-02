@@ -135,3 +135,7 @@ Parameters:
   - `it` (int): The number of iterations for the GS algorithm.
 Returns:
   - a 2D numpy array representing the phase of the retrieved wavefront after the GS algorithm has converged to a solution.
+
+
+# DynamicTweezers.py
+This Python script comprises a sequence of routines for pathfinding and animating a path for a 5-dimensional array. This programme shows how to use the hangu the pathfinder class. For more detail go with the flow of code.
