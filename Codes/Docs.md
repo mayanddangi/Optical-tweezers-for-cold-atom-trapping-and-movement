@@ -110,3 +110,28 @@ frame = 10
 hangu_moves = hangu_the_pathfinder(dim_original, spacing_pixel, origin, captured_prob, frame)
 moves, moveX, moveY, a = hangu_moves.hangu_findpath_XandY()
 ```
+
+
+# GS.py
+## Methods
+**`gaussian_beam(res1, res2, sigma)`**
+This function generates a 2D Gaussian beam with given resolution and sigma.
+Parameters:
+  - `res1` (int): The resolution of the Gaussian beam in the x direction.
+  - `res2` (int): The resolution of the Gaussian beam in the y direction.
+  - `sigma` (float): The standard deviation of the Gaussian distribution.
+Returns:
+  - a 2D numpy array representing the generated Gaussian beam.
+</br>
+</br>
+
+**`GS(source, target, retrived_phase, it)`**
+This function implements the Gerchberg-Saxton (GS) algorithm for phase retrieval from a given source and target. The GS algorithm iteratively updates the phase of the retrieved wavefront until it matches the phase of the target wavefront.
+
+Parameters:
+  - `source` (numpy.ndarray): a 2D numpy array representing the complex amplitude of the source wavefront.
+  - `target` (numpy.ndarray): a 2D numpy array representing the complex amplitude of the target wavefront.
+  - `retrived_phase`(numpy.ndarray): a 2D numpy array representing the initial phase of the wavefront.
+  - `it` (int): The number of iterations for the GS algorithm.
+Returns:
+  - a 2D numpy array representing the phase of the retrieved wavefront after the GS algorithm has converged to a solution.
