@@ -30,6 +30,19 @@ class hangu_the_pathfinder:
         
         self.dim_target = None
         self.COM = None
+        self.adj = None
+        self.target = None
+        self.isSimulation = True
+        self.showPlot = True
+        for key, value in kwargs.items():
+            if(key=='simulation'):
+                self.isSimulation = value
+            if(key=='inital_array'):
+                self.adj = value
+            if(key=='target_array'):
+                self.target = value
+            if(key=='showPlot'):
+                self.showPlot = value
         
 
     '''
@@ -146,7 +159,7 @@ class hangu_the_pathfinder:
     '''
         Return the cost matrix based on the square of distance between the targated and reservoir sites
     '''
-    def getCost(self, initalArray,targetArray):
+    def __getCost(self, initalArray, targetArray):
         initial_atoms = len(initalArray)
         row = []
         cost = []
@@ -170,29 +183,33 @@ class hangu_the_pathfinder:
     def hangu_findpath_XandY(self, **kwargs):
 
         # Generate Random array equivalent to the position of captured atom in lattice
-        adj = self.random_captured_adjlist() # (self.dim_original, self.spacing_pixel, self.captured_prob, self.origin)
-        self.plot_adjlist(adj)
+        if(self.adj is None):
+            self.adj = self.random_captured_adjlist() # (self.dim_original, self.spacing_pixel, self.captured_prob, self.origin)
+        if(self.showPlot):
+            self.plot_adjlist(self.adj)
 
         # Set the target dimension for the continous square array
         if(self.dim_target is None):
-            self.dim_target = int((len(adj))**0.5)
+            self.dim_target = int((len(self.adj))**0.5)
 
         #------------------- Obtain Centre ----------------------------
         x = 0
         y = 0
-        for i in adj:
+        for i in self.adj:
             x+=i[0]
             y+=i[1]
-        self.COM = (round(x/len(adj),0), round(y/len(adj),0))
+        self.COM = (round(x/len(self.adj),0), round(y/len(self.adj),0))
         #-------------------------------------------------------------
 
         # Obtain the position of Targeted array
-        target = self.get_adjlist(self.dim_target, self.spacing_pixel, self.COM)
-        self.plot_adjlist(target)
+        if(self.target is None):
+            self.target = self.get_adjlist(self.dim_target, self.spacing_pixel, self.COM)
+        if(self.showPlot):
+            self.plot_adjlist(self.target)
 
         # Compute the cost matrix
-        cost, initialArray, difference = self.getCost(adj, target)
-        print(f'Inital positions: {initialArray}/nFinal positions: {target}')
+        cost, initialArray, difference = self.__getCost(self.adj, self.target)
+        print(f'Inital positions: {initialArray}/nFinal positions: {self.target}')
 
         # Calculate moves using Hungarian Algorithm
         m = munkers.Munkres()
@@ -200,9 +217,9 @@ class hangu_the_pathfinder:
         moves = []
 
         for i in range(0, len(hungarian_matching)):
-            if(hungarian_matching[i][0] < len(target)):
+            if(hungarian_matching[i][0] < len(self.target)):
                 # Move: initialArray[hungarian_matching[i][1]] --> target[hungarian_matching[i][0]]
-                moves.append((initialArray[hungarian_matching[i][1]] ,target[hungarian_matching[i][0]]))
+                moves.append((initialArray[hungarian_matching[i][1]] ,self.target[hungarian_matching[i][0]]))
             else:
                 # Move: initialArray[hungarian_matching[i][1]] --> initialArray[hungarian_matching[i][1]]
                 moves.append((initialArray[hungarian_matching[i][1]], initialArray[hungarian_matching[i][1]]))
@@ -219,4 +236,4 @@ class hangu_the_pathfinder:
                 d_y = (moves[t][1][1]-moves[t][0][1])/(self.frame-1)
                 moveY[t][i] = int(moves[t][0][1] + i*d_y)
 
-        return [moves, moveX, moveY, adj]
+        return [moves, moveX, moveY, self.adj]
