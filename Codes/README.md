@@ -8,7 +8,7 @@ As part of future work, the code will be interfaced with a camera, which will en
 Before running or understanding this code, the following software and hardware requirements must be met:
 
 ### Software
-- Python 3.0
+- Python 3.9
 - Holoeye SLM SDK
 - Windows 10.0 or higher
 - Python libraries: numpy, matplotlib, tqdm, opencv
