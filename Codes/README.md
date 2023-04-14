@@ -115,9 +115,12 @@ Returns:
 
 **`hangu_findpath_XandY()`**
 This function finds the optimal path between the initial and target arrays using the Hungarian algorithm. It first generates a random array equivalent to the position of captured atoms in a lattice. Then, it sets the target dimension for the continuous square array and computes the cost matrix using the __getCost() function. Next, it calculates the moves using the Hungarian algorithm and generates the X and Y coordinates for each atom in each frame.
+</br>
 
 Parameters:
   - `None`
+  
+</br>
 Returns:
   - a list moves representing the moves made by each atom
   - a 2D numpy array moveX representing the X coordinates for each atom in each frame
@@ -145,10 +148,14 @@ moves, moveX, moveY, a = hangu_moves.hangu_findpath_XandY()
 ## Methods
 **`gaussian_beam(res1, res2, sigma)`**
 This function generates a 2D Gaussian beam with given resolution and sigma.
+</br>
+
 Parameters:
   - `res1` (int): The resolution of the Gaussian beam in the x direction.
   - `res2` (int): The resolution of the Gaussian beam in the y direction.
   - `sigma` (float): The standard deviation of the Gaussian distribution.
+  
+</br>
 Returns:
   - a 2D numpy array representing the generated Gaussian beam.
 </br>
@@ -156,12 +163,15 @@ Returns:
 
 **`GS(source, target, retrived_phase, it)`**
 This function implements the Gerchberg-Saxton (GS) algorithm for phase retrieval from a given source and target. The GS algorithm iteratively updates the phase of the retrieved wavefront until it matches the phase of the target wavefront.
+</br>
 
 Parameters:
   - `source` (numpy.ndarray): a 2D numpy array representing the complex amplitude of the source wavefront.
   - `target` (numpy.ndarray): a 2D numpy array representing the complex amplitude of the target wavefront.
   - `retrived_phase`(numpy.ndarray): a 2D numpy array representing the initial phase of the wavefront.
   - `it` (int): The number of iterations for the GS algorithm.
+</br>
+
 Returns:
   - a 2D numpy array representing the phase of the retrieved wavefront after the GS algorithm has converged to a solution.
 
