@@ -41,7 +41,7 @@ The program is defined by a class called `hangu_the_pathfinder`
 ## Constructor
 The `hangu_the_pathfinder` class constructor takes the following input parameters:
   - `dim_original` (int): Dimension of the square matrix (tweezers)
-  - `spacing_pixel' (int): spacing between the two tweezers
+  - `spacing_pixel` (int): spacing between the two tweezers
   - `origin` (tuple): origin i.e. left most corner of the tweezers
   - `captured_prob` (float): probability of capturing an atom at a particular site
   - `frame` (int): number of frames for the animation / movement
@@ -66,58 +66,86 @@ Returns:
   - `None`
 </br>
 </br>
+</br>
+</br>
 
 **`random_captured_adjlist(**kwargs)`**
 This method returns the list of coordinate points generated randomly, analogous to the trap. In the actual implementation, the "position" of the atom list will be replaced by the actual positions of atoms captured, which will be detected by another system.
+</br>
+
 Paramters:
   - `dim` (int, optional): Dimension of the tweezers (default dim_original).
   - `spacing` (int, optional): Spacing between two points (default spacing_pixel). 
   - `origin` (tuple, optional): Origin of the tweezers (default origin).
   - `prob` (float, optional): Probability of an atom getting trapped at a particular site (default captured_prob)
+</br>
+
 Return:
   - a list of coordinate points generated randomly
+</br>
+</br>
 </br>
 </br>
 
 **`get_adjlist(dim, spacing, COM)`**
 This method returns the adjacency list of positions of the targeted atoms.
+</br>
+
 Parameters:
   - `dim` (int): Dimension of the targeted square matrix. 
   - `spacing` (int): required spacing between two atoms. 
   - `COM` (tuple): Coordinates of the centre of the targeted array.
+</br>
+
 Return:
   - a adjacency list of positions of the targeted atoms
+</br>
+</br>
 </br>
 </br>
 
 **`dist(pos1, pos2)`**
 This method returns the Euclidean distance between two positions (points).
+</br>
+
 Parameters:
   - `pos1` (tuple): position of 1st point
   - `pos2` (tuple): position of 2nd point
+</br>
+
 Return:
   - euclidean distance between two points
+</br>
+</br>
 </br>
 </br>
 
 **`__getCost(initalArray, targetArray)`**
 This function computes the cost matrix between the initial and target arrays using the Euclidean distance between each pair of atoms in the two arrays. The cost matrix is used in the Hungarian algorithm to find the optimal matching between the two arrays.
+</br>
 
 Parameters:
   - `initalArray` (list): a list of tuples representing the initial positions of atoms
   - `targetArray` (list): a list of tuples representing the target positions of atoms
+</br>
+
 Returns:
   - a list cost representing the cost matrix
   - a list `initialArray` representing the initial positions of atoms
   - an integer difference representing the difference between the number of atoms in `initalArray` and `targetArray`
 </br>
 </br>
+</br>
+</br>
 
 **`hangu_findpath_XandY()`**
 This function finds the optimal path between the initial and target arrays using the Hungarian algorithm. It first generates a random array equivalent to the position of captured atoms in a lattice. Then, it sets the target dimension for the continuous square array and computes the cost matrix using the __getCost() function. Next, it calculates the moves using the Hungarian algorithm and generates the X and Y coordinates for each atom in each frame.
+</br>
 
 Parameters:
   - `None`
+  
+</br>
 Returns:
   - a list moves representing the moves made by each atom
   - a 2D numpy array moveX representing the X coordinates for each atom in each frame
@@ -145,23 +173,33 @@ moves, moveX, moveY, a = hangu_moves.hangu_findpath_XandY()
 ## Methods
 **`gaussian_beam(res1, res2, sigma)`**
 This function generates a 2D Gaussian beam with given resolution and sigma.
+</br>
+
 Parameters:
   - `res1` (int): The resolution of the Gaussian beam in the x direction.
   - `res2` (int): The resolution of the Gaussian beam in the y direction.
   - `sigma` (float): The standard deviation of the Gaussian distribution.
+  
+</br>
 Returns:
   - a 2D numpy array representing the generated Gaussian beam.
 </br>
 </br>
+</br>
+</br>
+
 
 **`GS(source, target, retrived_phase, it)`**
 This function implements the Gerchberg-Saxton (GS) algorithm for phase retrieval from a given source and target. The GS algorithm iteratively updates the phase of the retrieved wavefront until it matches the phase of the target wavefront.
+</br>
 
 Parameters:
   - `source` (numpy.ndarray): a 2D numpy array representing the complex amplitude of the source wavefront.
   - `target` (numpy.ndarray): a 2D numpy array representing the complex amplitude of the target wavefront.
   - `retrived_phase`(numpy.ndarray): a 2D numpy array representing the initial phase of the wavefront.
   - `it` (int): The number of iterations for the GS algorithm.
+</br>
+
 Returns:
   - a 2D numpy array representing the phase of the retrieved wavefront after the GS algorithm has converged to a solution.
 
